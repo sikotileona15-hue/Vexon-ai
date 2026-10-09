@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#050914">
+<title>ORVEX AI — Beyond what's possible</title>
+<style>
+:root{--bg:#050812;--panel:#0a1020;--panel2:#0c1629;--line:rgba(110,173,255,.16);--blue:#39baff;--cyan:#7be6ff;--muted:#8b9bb4;--white:#f3f8ff}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body{background:radial-gradient(ellipse at 66% 10%,rgba(16,93,177,.18),transparent 38%),linear-gradient(145deg,#040711,#070d1b 55%,#040711);overflow-x:hidden}
+button,input{font:inherit}.app{min-height:100vh;display:grid;grid-template-columns:245px 1fr}
+.sidebar{border-right:1px solid var(--line);background:rgba(4,8,18,.78);padding:22px 15px;display:flex;flex-direction:column;gap:26px;z-index:3}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px}.mark{width:38px;height:38px;border:1px solid rgba(71,193,255,.65);border-radius:50%;display:grid;place-items:center;box-shadow:0 0 20px rgba(30,163,255,.18);flex-shrink:0}
+.mark svg{width:25px;height:25px}.brandname{font-size:19px;font-weight:850;letter-spacing:1.5px}.brandname span{color:var(--blue)}.tagline{font-size:9px;letter-spacing:2.3px;color:#92a6c5;margin-top:3px}
+.newchat{border:1px solid rgba(61,180,255,.35);border-radius:12px;padding:12px;background:linear-gradient(110deg,rgba(24,117,202,.16),rgba(10,30,58,.3));color:#d9f5ff;text-align:left;cursor:pointer}
+.newchat strong{margin-left:8px}.navlabel{font-size:10px;letter-spacing:2px;color:#667d9e;padding:0 11px;margin-bottom:-14px}.nav{display:grid;gap:7px}.nav button{display:flex;align-items:center;gap:12px;width:100%;padding:11px 12px;border:1px solid transparent;border-radius:10px;background:transparent;color:#9aacc5;text-align:left;cursor:pointer}.nav button.active,.nav button:hover{background:rgba(35,133,218,.12);border-color:rgba(68,171,255,.17);color:#eaf8ff}.nav .ico{width:20px;text-align:center;color:#65cfff;font-size:16px}.sidebottom{margin-top:auto;border:1px solid var(--line);background:rgba(11,23,42,.7);padding:13px;border-radius:12px}.status{font-size:11px;color:#9db1cc;display:flex;align-items:center;gap:7px}.dot{width:7px;height:7px;border-radius:50%;background:#47d8a0;box-shadow:0 0 9px #47d8a0}.sidebottom p{font-size:11px;color:#70839e;line-height:1.6;margin:10px 0 0}
+.main{min-width:0;position:relative;display:flex;flex-direction:column;min-height:100vh}.topbar{height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;border-bottom:1px solid rgba(110,173,255,.08);background:rgba(5,9,20,.4)}.crumb{font-size:12px;color:#8fa3c0}.crumb b{color:#e9f7ff;font-weight:600}.topright{display:flex;align-items:center;gap:12px}.modelpill{font-size:11px;border:1px solid var(--line);border-radius:30px;padding:7px 11px;color:#a9c2df}.avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(140deg,#123a63,#0b1529);border:1px solid #28699a;display:grid;place-items:center;color:#8de3ff;font-size:12px}
+.content{width:min(100%,940px);margin:0 auto;padding:32px 26px 24px;flex:1;display:flex;flex-direction:column;align-items:center}
+.hero{position:relative;width:100%;min-height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;border-radius:24px}
+.aurora{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 75%,rgba(12,120,226,.22),transparent 42%),linear-gradient(180deg,transparent 30%,rgba(7,23,47,.42));pointer-events:none}
+.mountains{position:absolute;inset:auto 0 0;width:100%;height:205px;opacity:.86}
+.hero-logo{position:relative;width:92px;height:92px;border:1px solid rgba(73,193,255,.65);border-radius:50%;display:grid;place-items:center;background:rgba(4,15,31,.7);box-shadow:0 0 30px rgba(31,154,255,.23),inset 0 0 20px rgba(34,158,255,.1);margin-bottom:20px}
+.hero-logo svg{width:65px;height:65px;filter:drop-shadow(0 0 7px rgba(69,194,255,.6))}
+h1{font-size:clamp(29px,4vw,43px);letter-spacing:-1.6px;margin:0;font-weight:720;position:relative}.hello-blue{color:#65d2ff}.subtitle{position:relative;color:#93a7c3;font-size:14px;margin:12px 0 0}
+.spark{color:#67d7ff}
+.composer{position:relative;width:min(100%,720px);margin-top:-2px;padding:15px;border-radius:18px;border:1px solid rgba(79,174,255,.26);background:linear-gradient(145deg,rgba(12,24,44,.96),rgba(7,15,29,.97));box-shadow:0 10px 40px rgba(0,0,0,.25),0 0 24px rgba(21,119,208,.06)}
+.composer textarea{display:block;width:100%;min-height:55px;resize:vertical;max-height:150px;background:transparent;border:0;outline:0;color:#eaf7ff;font-size:14px;padding:7px 7px 12px}.composer textarea::placeholder{color:#7086a5}
+.composefoot{display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid rgba(120,175,235,.1);padding-top:12px}.hint{font-size:10px;color:#7086a5}.send{border:0;border-radius:10px;background:linear-gradient(135deg,#1c8ff1,#45d2ff);color:#001322;font-weight:800;padding:10px 17px;cursor:pointer;box-shadow:0 0 17px rgba(38,165,255,.23)}.send:hover{filter:brightness(1.12)}
+.suggestions{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;margin:20px 0 16px}.suggestion{border:1px solid rgba(95,163,231,.16);border-radius:30px;background:rgba(11,22,41,.7);color:#9db2cf;padding:9px 13px;font-size:11px;cursor:pointer}.suggestion:hover{border-color:rgba(76,192,255,.55);color:#e3f7ff}
+.tools{width:min(100%,720px);display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-top:10px}.tool{border:1px solid rgba(95,163,231,.14);border-radius:14px;padding:16px 12px;background:rgba(10,19,36,.68);cursor:pointer;text-align:left;transition:.2s}.tool:hover{transform:translateY(-2px);border-color:rgba(72,184,255,.42);background:rgba(14,35,60,.75)}.tool .ticon{font-size:20px;color:#67d2ff;margin-bottom:12px}.tool strong{display:block;font-size:12px;font-weight:650}.tool small{display:block;color:#7287a4;font-size:10px;margin-top:5px;line-height:1.4}
+.response{display:none;width:min(100%,720px);margin:14px 0 0;border:1px solid var(--line);border-radius:15px;background:rgba(8,17,32,.94);padding:16px;line-height:1.65;font-size:13px;color:#c8d9ee;white-space:pre-wrap}.response.show{display:block}.response .rtitle{font-weight:700;color:#78dcff;margin-bottom:7px}
+.footer{font-size:10px;color:#536985;text-align:center;padding:18px 8px 5px}
+.mobilebrand,.mobilebottom{display:none}
+@media(max-width:760px){.app{grid-template-columns:1fr}.sidebar{display:none}.topbar{height:58px;padding:0 16px}.content{padding:16px 14px 78px}.hero{min-height:285px;border-radius:18px}.mountains{height:170px}.hero-logo{width:76px;height:76px;margin-bottom:16px}.hero-logo svg{width:53px;height:53px}h1{font-size:30px;letter-spacing:-1px}.subtitle{font-size:12px;max-width:280px;line-height:1.6}.composer{padding:12px}.tools{grid-template-columns:repeat(2,1fr);gap:9px}.tool{padding:13px}.tool .ticon{margin-bottom:7px}.modelpill{font-size:10px}.mobilebottom{display:flex;position:fixed;bottom:0;left:0;right:0;height:61px;background:rgba(5,10,21,.96);border-top:1px solid var(--line);backdrop-filter:blur(14px);z-index:5;justify-content:space-around;padding:7px 5px}.mobilebottom button{border:0;background:transparent;color:#7890af;font-size:10px;display:flex;flex-direction:column;align-items:center;gap:4px;min-width:58px}.mobilebottom button span{font-size:17px;color:#6fd7ff}.mobilebottom button.active{color:#e4f7ff}.footer{padding-top:16px}.crumb{font-size:11px}}
+@media(max-width:390px){.hero{min-height:255px}.hero-logo{width:67px;height:67px}.hero-logo svg{width:47px}.suggestion{font-size:10px;padding:8px 10px}.hint{font-size:9px}.send{padding:9px 12px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><div class="mark"><svg viewBox="0 0 100 100" fill="none" aria-label="mountain logo"><path d="M13 72 40 32 53 49 64 39 88 72H13Z" stroke="#68d8ff" stroke-width="4" stroke-linejoin="round"/><path d="m32 48 8-16 13 17-8-5-5 7-8-3Z" fill="#b6f2ff"/><path d="M20 77h60" stroke="#268ed9" stroke-width="3" stroke-linecap="round"/></svg></div><div><div class="brandname">ORVEX <span>AI</span></div><div class="tagline">BEYOND WHAT'S POSSIBLE</div></div></div>
+  <button class="newchat" id="newChat">＋ <strong>New chat</strong></button>
+  <div class="navlabel">WORKSPACE</div>
+  <nav class="nav" id="sidenav">
+    <button class="active" data-tool="Chat"><span class="ico">◈</span>Chat</button>
+    <button data-tool="Voice"><span class="ico">◖</span>Voice</button>
+    <button data-tool="Generate"><span class="ico">✧</span>Generate</button>
+    <button data-tool="Translate"><span class="ico">文</span>Translate</button>
+    <button data-tool="Help"><span class="ico">?</span>Help</button>
+  </nav>
+  <div class="sidebottom"><div class="status"><span class="dot"></span> Interface demo ready</div><p>This is your ORVEX AI preview. Connect an AI provider later to enable real AI answers.</p></div>
+</aside>
+<main class="main">
+  <header class="topbar"><div class="crumb">Workspace <span style="color:#426080">/</span> <b id="currentSection">New chat</b></div><div class="topright"><div class="modelpill">✦ ORVEX Preview</div><div class="avatar">O</div></div></header>
+  <section class="content">
+    <div class="hero">
+      <div class="aurora"></div>
+      <svg class="mountains" viewBox="0 0 1200 280" preserveAspectRatio="none" aria-hidden="true">
+        <defs><linearGradient id="mountFill" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#146ab8" stop-opacity=".45"/><stop offset="1" stop-color="#07152b" stop-opacity=".02"/></linearGradient><linearGradient id="mountStroke"><stop stop-color="#0c4f9c" stop-opacity=".1"/><stop offset=".5" stop-color="#48c8ff" stop-opacity=".85"/><stop offset="1" stop-color="#0b3b75" stop-opacity=".25"/></linearGradient></defs>
+        <path d="M0 230 115 166 180 199 315 89 398 163 486 126 605 203 716 102 815 166 920 80 1023 165 1110 125 1200 190V280H0Z" fill="url(#mountFill)"/>
+        <path d="M0 230 115 166 180 199 315 89 398 163 486 126 605 203 716 102 815 166 920 80 1023 165 1110 125 1200 190" fill="none" stroke="url(#mountStroke)" stroke-width="2"/>
+        <path d="M0 258 160 214 260 235 420 175 550 220 680 166 820 220 975 171 1100 215 1200 198V280H0Z" fill="#061126" stroke="#124f87" stroke-opacity=".6" stroke-width="1.5"/>
+        <path d="M315 89 341 118 367 112 398 163M716 102 744 133 770 123 815 166M920 80 944 117 970 111 1023 165" fill="none" stroke="#78dfff" stroke-opacity=".8" stroke-width="1.5"/>
+      </svg>
+      <div class="hero-logo"><svg viewBox="0 0 100 100" fill="none" aria-label="ORVEX mountain symbol"><path d="M12 74 39 31 52 49 64 38 89 74H12Z" stroke="#67d8ff" stroke-width="3.5" stroke-linejoin="round"/><path d="m29 48 10-17 13 18-8-5-5 7-10-3Z" fill="#c1f4ff"/><path d="M20 80h60" stroke="#278fdc" stroke-width="3" stroke-linecap="round"/></svg></div>
+      <h1>Hello, I'm <span class="hello-blue">ORVEX.</span> <span class="spark">✦</span></h1>
+      <p class="subtitle">Your ideas, amplified. What can we explore today?</p>
+    </div>
+    <form class="composer" id="chatForm"><textarea id="prompt" placeholder="Ask ORVEX anything..."></textarea><div class="composefoot"><div class="hint">✦ Demo mode · Your ideas start here</div><button class="send" type="submit">Send ↗</button></div></form>
+    <div class="response" id="response"><div class="rtitle">✦ ORVEX AI · Demo</div><div id="responseText"></div></div>
+    <div class="suggestions">
+      <button class="suggestion" data-prompt="Give me creative ideas for a new project">✧ Creative ideas</button>
+      <button class="suggestion" data-prompt="Explain a difficult topic in simple words">⌘ Learn something</button>
+      <button class="suggestion" data-prompt="Help me write a story">▤ Write a story</button>
+    </div>
+    <div class="tools">
+      <button class="tool" data-tool="Chat"><div class="ticon">◈</div><strong>AI Chat</strong><small>Explore ideas and ask questions</small></button>
+      <button class="tool" data-tool="Voice"><div class="ticon">◖</div><strong>Voice</strong><small>A voice assistant experience</small></button>
+      <button class="tool" data-tool="Generate"><div class="ticon">✧</div><strong>Generate</strong><small>Turn prompts into creations</small></button>
+      <button class="tool" data-tool="Translate"><div class="ticon">文</div><strong>Translate</strong><small>Connect across languages</small></button>
+    </div>
+    <div class="footer">ORVEX AI · BEYOND WHAT'S POSSIBLE <span style="color:#267db7">✦</span><br><span style="display:inline-block;margin-top:6px">Preview interface — AI responses are not connected yet.</span></div>
+  </section>
+</main>
+</div>
+<nav class="mobilebottom">
+  <button class="active" data-tool="Chat"><span>◈</span>Chat</button>
+  <button data-tool="Voice"><span>◖</span>Voice</button>
+  <button data-tool="Generate"><span>✧</span>Generate</button>
+  <button data-tool="Translate"><span>文</span>Translate</button>
+  <button data-tool="Help"><span>?</span>Help</button>
+</nav>
+<script>
+const promptBox=document.getElementById('prompt'), response=document.getElementById('response'), responseText=document.getElementById('responseText');
+function demoReply(q){
+ const t=q.toLowerCase();
+ if(t.includes('story')) return 'Let’s create something unforgettable. Start with a character who discovers a mysterious blue signal coming from a mountain no map has ever shown. What happens next is up to you.\\n\\nNote: This is a sample response from the interface demo, not a live AI answer.';
+ if(t.includes('explain')||t.includes('learn')) return 'Absolutely — I can help break a difficult topic into smaller, simple steps. In a full version, ORVEX would explain the topic, give examples, and check your understanding.\\n\\nThis is a sample response. Real AI is not connected yet.';
+ if(t.includes('idea')||t.includes('creative')||t.includes('project')) return 'Here are three starting ideas:\\n1. Build a tool that helps students plan their week.\\n2. Create a futuristic story world with its own symbols and lore.\\n3. Design an app that turns big goals into small daily steps.\\n\\nThis is a sample response from the demo.';
+ if(t.includes('hello')||t.includes('hi')) return 'Hello! Welcome to ORVEX AI. ✦ Your ideas, amplified.\\n\\nThis is demo mode — connect a real AI service later for live answers.';
+ return 'Thanks for trying ORVEX AI! Your message was received by this website demo. To answer questions with real AI, this interface needs to be connected to an AI model through a secure service. No API key or paid service is connected in this version.';
+}
+document.getElementById('chatForm').addEventListener('submit',e=>{e.preventDefault();const q=promptBox.value.trim();if(!q){promptBox.focus();return;}responseText.textContent='You asked: “'+q+'”\\n\\n'+demoReply(q);response.classList.add('show');response.scrollIntoView({behavior:'smooth',block:'nearest'});});
+document.querySelectorAll('[data-prompt]').forEach(b=>b.addEventListener('click',()=>{promptBox.value=b.dataset.prompt;promptBox.focus();}));
+function selectTool(tool){document.getElementById('currentSection').textContent=tool;document.querySelectorAll('#sidenav button,.mobilebottom button').forEach(b=>b.classList.toggle('active',b.dataset.tool===tool));if(tool!=='Chat'){response.classList.add('show');responseText.textContent=tool+' is part of the ORVEX AI concept. This preview shows the interface only. We can build this feature next.';}}
+document.querySelectorAll('[data-tool]').forEach(b=>b.addEventListener('click',()=>selectTool(b.dataset.tool)));
+document.getElementById('newChat').addEventListener('click',()=>{promptBox.value='';response.classList.remove('show');selectTool('Chat');document.getElementById('currentSection').textContent='New chat';promptBox.focus();});
+</script>
+</body>
+</html>
